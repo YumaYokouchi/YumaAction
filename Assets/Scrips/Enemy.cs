@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 	public GameObject Target;
+	float Timer;
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +12,14 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Timer += Time.deltaTime;
+		if (Timer > 1) {
+			LookAt ();
+		}
+
+	}
+	void LookAt(){
 		this.transform.LookAt(Target.transform);
+		Timer = 0;
 	}
 }
